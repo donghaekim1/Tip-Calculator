@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container col-7">
+      <div class="navbar">
+        <h1>Tip Calculator</h1>
+        <nav>
+          <ul>
+            <li><a href="/">HOME</a></li>
+            <li><a href="http://127.0.0.1:5500/aboutus.html">ABOUT</a></li>
+            <div>
+              <button class="btn btn-mode" id="darkModeBtn">Dark Mode</button>
+              <button class="btn d-none btn-mode" id="lightModeBtn">Light Mode</button>
+            </div>
+          </ul>
+        </nav>
+      </div>
+      <hr />
+      <div class="row h1 w-auto">
+        <div class="col tip-marg">
+          <div class="tip-container">
+            <div class="tip-calculator">
+              <label>Amount</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                </div>
+                <input type="number" class="form-control" id="totalBill" placeholder="Total Bill" value="0" />
+              </div>
+              <div class="form-group">
+                <label for="tipPercent">Tip:</label>
+                <input type="range" class="form-control" id="tipPercent" value="0" />
+                <output for="tipPercent" id="tipOutput">0</output><span>%</span> <output for="tipPercent" id="tipAmount">0</output>
+              </div>
+              <div class="form-group">
+                <label for="tipCustomPercent">Custom Tip:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number" class="form-control" id="tipCustomPercent" value="0" />
+                </div>
+                <button class="btn btn-primary" id="tipCustomBtn">Apply</button>
+              </div>
+            </div>
+            <div class="row navbar">
+              <div class="col">
+                <label>Total</label>
+                <div class="input-group-prepend" id="totalAmount">0.00</div>
+              </div>
+              <div class="col">
+                <label>Party Size</label>
+                <input type="number" class="form-control" id="partySize" placeholder="Party Size" value="1" />
+              </div>
+              <div class="col">
+                <label>Total Per Person</label>
+                <div class="input-group-prepend" id="totalPerPerson">0.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col calc-marg">
+          <div class="calculator card" id="calculator">
+            <input type="text" class="calculator-screen z-depth-1" value="" disabled />
+
+            <div class="calculator-keys">
+              <button type="button" class="operator btn btn-info" value="+">+</button>
+              <button type="button" class="operator btn btn-info" value="-">-</button>
+              <button type="button" class="operator btn btn-info" value="*">&times;</button>
+              <button type="button" class="operator btn btn-info" value="/">&divide;</button>
+
+              <button type="button" value="7" class="btn btn-light waves-effect">7</button>
+              <button type="button" value="8" class="btn btn-light waves-effect">8</button>
+              <button type="button" value="9" class="btn btn-light waves-effect">9</button>
+
+              <button type="button" value="4" class="btn btn-light waves-effect">4</button>
+              <button type="button" value="5" class="btn btn-light waves-effect">5</button>
+              <button type="button" value="6" class="btn btn-light waves-effect">6</button>
+
+              <button type="button" value="1" class="btn btn-light waves-effect">1</button>
+              <button type="button" value="2" class="btn btn-light waves-effect">2</button>
+              <button type="button" value="3" class="btn btn-light waves-effect">3</button>
+
+              <button type="button" value="0" class="btn btn-light waves-effect">0</button>
+              <button type="button" class="decimal function btn btn-secondary" value=".">.</button>
+              <button type="button" class="all-clear function btn btn-danger btn-sm" value="all-clear">AC</button>
+
+              <button type="button" class="equal-sign operator btn btn-default" value="=">=</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="/calculator.js"></script>
+
+    <script>
+      // All my event handlers here
+      document.getElementById("darkModeBtn").addEventListener("click", backgroundChange);
+      document.getElementById("lightModeBtn").addEventListener("click", backgroundChange);
+      const tipRange = document.getElementById("tipPercent");
+      const tipOutput = document.getElementById("tipOutput");
+      const totalBill = document.getElementById("totalBill");
+      const totalAmount = document.getElementById("totalAmount");
+      const tipAmount = document.getElementById("tipAmount");
+      const tipCustomPercent = document.getElementById("tipCustomPercent");
+      const tipCustomBtn = document.getElementById("tipCustomBtn");
+      const partySize = document.getElementById("partySize");
+      const totalPerPerson = document.getElementById("totalPerPerson");
+
+      // Check if dark mode preference is stored in local storage
+      const isDarkMode = localStorage.getItem("darkMode");
+      if (isDarkMode === "true") {
+        enableDarkMode();
+      }
+
+      function backgroundChange() {
+        console.log("clicked");
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+
+        // Toggle dark mode preference in local storage
+        const isDarkMode = element.classList.contains("dark-mode");
+        localStorage.setItem("darkMode", isDarkMode);
+
+        toggleButtonVisibility();
+      }
+
+      function enableDarkMode() {
+        var element = document.body;
+        element.classList.add("dark-mode");
+
+        toggleButtonVisibility();
+      }
+
+      function toggleButtonVisibility() {
+        $("#darkModeBtn").toggleClass("d-none");
+        $("#lightModeBtn").toggleClass("d-none");
+      }
+
+      function tipValueChange() {
+        tipOutput.value = tipRange.value;
+      }
+
+      function addTotalAmount() {
+        const changeTipToDecimal = parseFloat(tipOutput.value) / 100;
+        const total = parseFloat(totalBill.value) + parseFloat(totalBill.value) * changeTipToDecimal;
+        totalAmount.textContent = total.toFixed(2);
+      }
+
+      function addTotalPerPersonAmount() {
+        const changeTipToDecimal = parseFloat(tipOutput.value) / 100;
+        const total = (parseFloat(totalBill.value) + parseFloat(totalBill.value) * changeTipToDecimal) / parseFloat(partySize.value);
+        totalPerPerson.textContent = total.toFixed(2);
+      }
+
+      function totalTipAmount() {
+        const changeTipToDecimal = parseFloat(tipOutput.value) / 100;
+        const additionalTip = parseFloat(totalBill.value) * changeTipToDecimal;
+        tipAmount.textContent = additionalTip.toFixed(2);
+      }
+
+      function addCustomTip() {
+        const customTipPercent = parseFloat(tipCustomPercent.value);
+        const customTipAmount = parseFloat(totalBill.value) * (customTipPercent / 100);
+        tipAmount.textContent = customTipAmount.toFixed(2);
+        tipOutput.textContent = customTipAmount.toFixed(2);
+        const total = parseFloat(totalBill.value) + customTipAmount;
+        totalAmount.textContent = total.toFixed(2);
+      }
+
+      tipRange.addEventListener("input", tipValueChange);
+      tipRange.addEventListener("input", addTotalAmount);
+      tipRange.addEventListener("input", totalTipAmount);
+      totalBill.addEventListener("input", addTotalAmount);
+      totalBill.addEventListener("input", addTotalPerPersonAmount);
+      tipRange.addEventListener("input", addTotalPerPersonAmount);
+      partySize.addEventListener("input", addTotalPerPersonAmount);
+      tipCustomBtn.addEventListener("click", addCustomTip);
+    </script>
+  </body>
+</html>
