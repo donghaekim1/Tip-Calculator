@@ -1,138 +1,131 @@
+.dark-mode1{
+  background: rgb(49, 49, 49);
+}
+
 .container {
-    width: 100%;
-    height: 100vh;
-    box-sizing: border-box;
-  }
-.calc-marg {
-    margin-right: -30%;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
-.tip-marg {
-    margin-left: -32%;
+.calculator.card {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 1.4rem;
+  padding: 50px 40px;
+  margin: 0 auto;
 }
-  
-  .navbar {
-    height: 12%;
-    display: flex;
-    align-items: center;
-  }
-  
-  nav {
-    flex: 1;
-    text-align: right;
-  }
-  
-  nav ul li {
-    list-style: none;
-    display: inline-block;
-    margin-left: 60px;
-  }
-  
-  nav ul div {
-    list-style: none;
-    display: inline-block;
-    margin-left: 50px;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    font-size: 13px;
-  }
-  
-  .row {
-    display: flex;
-    height: 88%;
-    align-items: center;
-  }
-  
-  .col {
-    flex: 50%;
-  }
-  
-  div .col h1 {
-    font-size: 100px
-  }
-  
-  body {
-    padding: 25px;
-    background-color: white;
-    color: black;
-    font-size: 25px;
-  }
-  
-  .dark-mode {
-    background-color: rgb(26, 24, 24);
-    color: white;
-  }
-  
-  .dark-mode button.btn-mode.btn {
-    color: white;
-  }
 
-  .dark-mode .btn-mode {
-    color: black;
-  }
+.tip-container {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 40px;
+  border-radius: 1.4rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  top: 50%;
+  left: 50%;
+  margin: 0 auto;
+}
 
-  div.calculator-keys{
-    background-color: #252525;
-  }
-  
-  div.calculator-keys .btn {
-    background-color: gray;
-  }
-  
-  .btn-mode {
-    width: 120px; /* Set a fixed width for the buttons */
-  }
-  
-  html {
-    font-size: 62.5%;
-    box-sizing: border-box;
-  }
-  
-  *,
-  *::before,
-  *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-  }
-  
-  .calculator {
-    width: 100%;
-  }
+div.form-group .txt-ipt{
+  background-color: transparent;
+  border: transparent;
+  color: #fff;
+}
 
-  .tip-container {
-    width: 100%;
-    margin-right: 20px;
-  }
-  
-  .calculator-screen {
-    width: 100%;
-    height: 80px;
-    border: none;
-    background-color: #252525;
-    color: #fff;
-    text-align: right;
-    padding-right: 20px;
-    padding-left: 10px;
-    font-size: 4rem;
-  }
-  
-  div .calculator-keys button {
-    height: 60px;
-    font-size: 2rem!important;
-  }
-  
-  .equal-sign {
-    height: 98%;
-    grid-area: 2 / 4 / 6 / 5;
-  }
-  
-  .calculator-keys {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
-    padding: 20px;
-  }
-  
+.calculator .calculator-screen {
+  width: 100%;
+  height: 80px;
+  border: none;
+  background-color: #252525;
+  color: #fff;
+  text-align: right;
+  padding-right: 20px;
+  padding-left: 10px;
+  font-size: 4rem;
+}
+
+.calculator .calculator-keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.calculator .calculator-keys button {
+  height: 60px;
+  font-size: 2rem !important;
+}
+
+
+.tip-container input[type="number"],
+.tip-container input[type="range"],
+.tip-container input[type="text"] {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+  width: 100%;
+}
+
+.tip-container input[type="number"] {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.tip-container input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #d3d3d3;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.tip-container input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #4caf50;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.tip-container input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #4caf50;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.tip-container input[type="range"]::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  background: #4caf50;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.tip-container label {
+  color: hsl(186, 14%, 43%);
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.dark-mode {
+  color: white;
+}
+
+div .calculator.calc-bg {
+  background-color: transparent;
+}
+
