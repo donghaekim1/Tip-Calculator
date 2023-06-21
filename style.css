@@ -121,6 +121,12 @@ div.form-group .txt-ipt{
   margin-bottom: 0.3rem;
 }
 
+div span.input-group-text {
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
+}
+
 .dark-mode {
   color: white;
 }
@@ -128,4 +134,9 @@ div.form-group .txt-ipt{
 div .calculator.calc-bg {
   background-color: transparent;
 }
+
+.white-color{
+color:white;
+}
+
 
