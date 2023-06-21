@@ -6,7 +6,7 @@ Hello, this is a tip calculator for users to use when they have a bill that they
 
 Theres a function where you can divide it with the party size of your group and it shows you how much per person it is. 
 
-#Techs Used
+# Techs Used
 
 Javascript - Created functions for the tip calculator that dealt with many mathematical equations to get the total bill + tip to be correct on the DOM. Created Event Listeners for the Custom tip button, for once it is pressed, the custom amount of $ will go towards the total amount. Created a function where it would divide the the total bill and with how many people are in the party which will then calculate how much money each person has to pay equally.
 
